@@ -1,0 +1,43 @@
+data:
+  appliances:
+  - hvac
+  - kitchen
+  - electronics
+  noise_threshold: 10
+  normalization: zscore
+  sample_rate: 6
+  sequence_length: 99
+  window_size: 99
+evaluation:
+  metrics:
+  - mae
+  - rmse
+  - r2_score
+  - nrmse
+model:
+  architecture:
+    dropout_rate: 0.2
+    filter_sizes:
+    - 5
+    - 3
+    - 3
+    input_channels: 1
+    num_filters:
+    - 8
+    - 8
+    - 16
+    output_size: 1
+  type: cnn
+paths:
+  data_dir: data/uk_dale
+  logs_dir: logs
+  models_dir: models
+  results_dir: results
+training:
+  batch_size: 64
+  early_stopping_patience: 3
+  learning_rate: 0.001
+  loss_function: mse
+  num_epochs: 5
+  optimizer: adam
+  validation_split: 0.2

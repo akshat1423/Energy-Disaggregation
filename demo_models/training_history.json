@@ -1,0 +1,96 @@
+{
+  "train_losses": [
+    1.901920263650413,
+    1.5535398827706837,
+    1.5110605306071507,
+    1.4930017611076092,
+    1.4542389191862892
+  ],
+  "val_losses": [
+    1.4591166719557747,
+    1.4225113126966689,
+    1.4071160250239902,
+    1.3911488680612474,
+    1.4324021100997926
+  ],
+  "appliance_losses": {
+    "hvac": [
+      0.061443704910694605,
+      0.05710838589639891,
+      0.05355150238389061,
+      0.05131609079147142,
+      0.07230716675283416
+    ],
+    "kitchen": [
+      0.403131211565813,
+      0.3714161854642462,
+      0.35971626377826654,
+      0.34597720726770126,
+      0.3661813821724897
+    ],
+    "electronics": [
+      0.9945417519599672,
+      0.9939867424586463,
+      0.9938482574054173,
+      0.993855569286952,
+      0.9939135604434544
+    ]
+  },
+  "best_val_loss": 1.3911488680612474,
+  "config": {
+    "data": {
+      "sequence_length": 99,
+      "window_size": 99,
+      "sample_rate": 6,
+      "appliances": [
+        "hvac",
+        "kitchen",
+        "electronics"
+      ],
+      "normalization": "zscore",
+      "noise_threshold": 10
+    },
+    "model": {
+      "type": "cnn",
+      "architecture": {
+        "input_channels": 1,
+        "num_filters": [
+          8,
+          8,
+          16
+        ],
+        "filter_sizes": [
+          5,
+          3,
+          3
+        ],
+        "dropout_rate": 0.2,
+        "output_size": 1
+      }
+    },
+    "training": {
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "num_epochs": 5,
+      "validation_split": 0.2,
+      "early_stopping_patience": 3,
+      "optimizer": "adam",
+      "loss_function": "mse"
+    },
+    "evaluation": {
+      "metrics": [
+        "mae",
+        "rmse",
+        "r2_score",
+        "nrmse"
+      ]
+    },
+    "paths": {
+      "data_dir": "data/uk_dale",
+      "models_dir": "models",
+      "results_dir": "results",
+      "logs_dir": "logs"
+    }
+  },
+  "training_time": "2025-09-10T08:10:31.620403"
+}

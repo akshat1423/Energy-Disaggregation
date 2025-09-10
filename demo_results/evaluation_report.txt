@@ -1,0 +1,40 @@
+Energy Disaggregation Evaluation Report
+Model: CNN Energy Disaggregation Model
+Generated: 2025-09-10 08:10:49
+============================================================
+
+HVAC:
+------------------------------
+MAE:          57.8664
+RMSE:         70.9657
+NRMSE:        0.0792
+R² Score:     -0.0144
+MAPE:         6.30%
+SAE:          0.0568
+Energy Error: 0.0568
+
+KITCHEN:
+------------------------------
+MAE:          0.0453
+RMSE:         0.0478
+NRMSE:        inf
+R² Score:     0.0000
+MAPE:         inf%
+SAE:          inf
+Energy Error: inf
+
+ELECTRONICS:
+------------------------------
+MAE:          15.8662
+RMSE:         20.1564
+NRMSE:        0.1343
+R² Score:     -0.0000
+MAPE:         11.06%
+SAE:          0.0000
+Energy Error: 0.0000
+
+OVERALL SUMMARY:
+------------------------------
+Average MAE:   24.5926
+Average RMSE:  30.3900
+Average R²:    -0.0048
