@@ -1,0 +1,50 @@
+# Configuration for CNN-based Energy Disaggregation Model
+
+# Data Configuration
+data:
+  sequence_length: 599  # Input sequence length for the CNN
+  window_size: 599      # Sliding window size
+  sample_rate: 6        # Sampling rate in seconds
+  appliances:
+    - "hvac"
+    - "kitchen"
+    - "electronics"
+  
+  # Data preprocessing
+  normalization: "zscore"  # Options: "zscore", "minmax", "none"
+  noise_threshold: 10      # Minimum power threshold to filter noise
+
+# Model Configuration
+model:
+  type: "cnn"
+  architecture:
+    input_channels: 1
+    num_filters: [30, 30, 40, 50]
+    filter_sizes: [10, 8, 6, 5]
+    dropout_rate: 0.2
+    output_size: 1  # Per appliance output
+
+# Training Configuration
+training:
+  batch_size: 512
+  learning_rate: 0.001
+  num_epochs: 100
+  validation_split: 0.2
+  early_stopping_patience: 10
+  optimizer: "adam"
+  loss_function: "mse"
+
+# Evaluation Configuration
+evaluation:
+  metrics:
+    - "mae"
+    - "rmse" 
+    - "r2_score"
+    - "nrmse"
+  
+# Paths Configuration
+paths:
+  data_dir: "data/uk_dale"
+  models_dir: "models"
+  results_dir: "results"
+  logs_dir: "logs"

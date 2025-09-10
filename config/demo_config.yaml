@@ -1,0 +1,43 @@
+# Demo Configuration for quick testing
+data:
+  sequence_length: 99         # Shorter sequences for faster training
+  window_size: 99
+  sample_rate: 6
+  appliances:
+    - "hvac"
+    - "kitchen"
+    - "electronics"
+  
+  normalization: "zscore"
+  noise_threshold: 10
+
+model:
+  type: "cnn"
+  architecture:
+    input_channels: 1
+    num_filters: [8, 8, 16]     # Smaller model
+    filter_sizes: [5, 3, 3]
+    dropout_rate: 0.2
+    output_size: 1
+
+training:
+  batch_size: 64              # Smaller batch size
+  learning_rate: 0.001
+  num_epochs: 5               # Fewer epochs for demo
+  validation_split: 0.2
+  early_stopping_patience: 3
+  optimizer: "adam"
+  loss_function: "mse"
+
+evaluation:
+  metrics:
+    - "mae"
+    - "rmse" 
+    - "r2_score"
+    - "nrmse"
+  
+paths:
+  data_dir: "data/uk_dale"
+  models_dir: "models"
+  results_dir: "results"
+  logs_dir: "logs"

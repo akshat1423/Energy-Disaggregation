@@ -1,0 +1,102 @@
+{
+  "metrics": {
+    "hvac": {
+      "mae": 52.30130127312685,
+      "rmse": 64.96421720800512,
+      "r2_score": 0.9488992918547912,
+      "nrmse": 0.0812000320928265,
+      "mape": 7.619118062004617,
+      "sae": 0.016777112312864415,
+      "energy_error": 0.016777112312864415
+    },
+    "kitchen": {
+      "mae": 1.226817893268674,
+      "rmse": 8.2702601682446,
+      "r2_score": 0.6597143802176723,
+      "nrmse": 5.6093164051004685,
+      "mape": 68.00433142185044,
+      "sae": 0.10132744817914983,
+      "energy_error": 0.10132744817914983
+    },
+    "electronics": {
+      "mae": 15.933354786130884,
+      "rmse": 19.961355194736086,
+      "r2_score": 3.683880546712093e-05,
+      "nrmse": 0.13306753886718678,
+      "mape": 11.033700394325304,
+      "sae": 0.00012328910504093413,
+      "energy_error": 0.00012328910504093413
+    }
+  },
+  "model_info": {
+    "checkpoint_path": "demo_models/best_model.pth",
+    "epoch": 3,
+    "training_val_loss": 1.3911488680612474,
+    "config": {
+      "data": {
+        "appliances": [
+          "hvac",
+          "kitchen",
+          "electronics"
+        ],
+        "noise_threshold": 10,
+        "normalization": "zscore",
+        "sample_rate": 6,
+        "sequence_length": 99,
+        "window_size": 99
+      },
+      "evaluation": {
+        "metrics": [
+          "mae",
+          "rmse",
+          "r2_score",
+          "nrmse"
+        ]
+      },
+      "model": {
+        "architecture": {
+          "dropout_rate": 0.2,
+          "filter_sizes": [
+            5,
+            3,
+            3
+          ],
+          "input_channels": 1,
+          "num_filters": [
+            8,
+            8,
+            16
+          ],
+          "output_size": 1
+        },
+        "type": "cnn"
+      },
+      "paths": {
+        "data_dir": "data/uk_dale",
+        "logs_dir": "logs",
+        "models_dir": "models",
+        "results_dir": "results"
+      },
+      "training": {
+        "batch_size": 64,
+        "early_stopping_patience": 3,
+        "learning_rate": 0.001,
+        "loss_function": "mse",
+        "num_epochs": 5,
+        "optimizer": "adam",
+        "validation_split": 0.2
+      }
+    }
+  },
+  "evaluation_summary": {
+    "total_samples": 100702,
+    "appliances": [
+      "hvac",
+      "kitchen",
+      "electronics"
+    ],
+    "avg_mae": 23.153824650842136,
+    "avg_rmse": 31.065277523661937,
+    "avg_r2": 0.5362168369593102
+  }
+}
